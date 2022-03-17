@@ -8,16 +8,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Echo some debug info
-        run: |
-          echo 'release tag name${{ github.event.release.tag_name }}'
-          echo 'ref ${{ github.ref }}'
-
   
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          body: 'A new release ${{ github.event.release.tag_name }} is available'
+          body: 'A new release ${{ github.ref_name }} is available'
 
