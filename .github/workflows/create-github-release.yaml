@@ -1,9 +1,6 @@
 name: Create GitHub release
 
-on:
-  push:
-    branches:
-      - master
+on: push
 
 jobs:
   create-github-release:
