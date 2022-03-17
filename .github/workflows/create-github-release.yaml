@@ -1,0 +1,20 @@
+name: Create GitHub release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  create-github-release:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+  
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          body: 'A new release with tag ${{ github.ref }}'
+
